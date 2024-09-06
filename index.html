@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teste Target Sistemas</title>
+    <link rel="stylesheet" href="/assets/style/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <h1>Teste Estágio Target Sistemas</h1>
+    </header>
+    <main>
+      <section>
+        <h2>1 - Observe o trecho de código abaixo:</h2>
+        <p>
+          int INDICE = 13, SOMA = 0, K = 0; Enquanto K < INDICE faça { K = K +
+          1; SOMA = SOMA + K; } Imprimir(SOMA);
+        </p>
+        <h3>Ao final do processamento, qual será o valor da variável SOMA?</h3>
+        <p><span>SOMA = 91</span></p>
+      </section>
+      <section>
+        <h2>
+          2 - Dado a sequência de Fibonacci, onde se inicia por 0 e 1 e o
+          próximo valor sempre será a soma dos 2 valores anteriores (exemplo: 0,
+          1, 1, 2, 3, 5, 8, 13, 21, 34...), escreva um programa na linguagem que
+          desejar onde, informado um número, ele calcule a sequência de
+          Fibonacci e retorne uma mensagem avisando se o número informado
+          pertence ou não a sequência.
+        </h2>
+        <label for="numero">Digite um número para análise:</label>
+        <input type="text" id="numero" />
+        <button onclick="checarNumeroFibonacci()">Verificar</button>
+        <p id="resultado"></p>
+      </section>
+      <section>
+        <h2>
+          3 - Dado um vetor que guarda o valor de faturamento diário de uma
+          distribuidora, faça um programa, na linguagem que desejar, que calcule
+          e retorne:
+        </h2>
+        <ul>
+          <li>O menor valor de faturamento ocorrido em um dia do mês;</li>
+          <li>O maior valor de faturamento ocorrido em um dia do mês;</li>
+          <li>
+            Número de dias no mês em que o valor de faturamento diário foi
+            superior à média mensal.
+          </li>
+        </ul>
+        <h4>IMPORTANTE</h4>
+        <ul>
+          <li>
+            a - Usar o json ou xml disponível como fonte dos dados do
+            faturamento mensal;
+          </li>
+          <li>
+            b - Podem existir dias sem faturamento, como nos finais de semana e
+            feriados. Estes dias devem ser ignorados no cálculo da média;
+          </li>
+        </ul>
+        <pre><code>
+          const faturamentoDados = [
+  { dia: "2024-09-01", faturamento: 200 },
+  { dia: "2024-09-02", faturamento: 0 },
+  { dia: "2024-09-03", faturamento: 300 },
+  { dia: "2024-09-04", faturamento: 250 },
+  { dia: "2024-09-05", faturamento: 0 },
+  { dia: "2024-09-06", faturamento: 150 },
+  { dia: "2024-09-07", faturamento: 100 },
+  { dia: "2024-09-08", faturamento: 350 },
+  { dia: "2024-09-09", faturamento: 0 },
+  { dia: "2024-09-10", faturamento: 180 },
+  { dia: "2024-09-11", faturamento: 0 },
+  { dia: "2024-09-12", faturamento: 220 },
+  { dia: "2024-09-13", faturamento: 0 },
+  { dia: "2024-09-14", faturamento: 300 },
+  { dia: "2024-09-15", faturamento: 0 },
+  { dia: "2024-09-16", faturamento: 190 },
+  { dia: "2024-09-17", faturamento: 0 },
+  { dia: "2024-09-18", faturamento: 240 },
+  { dia: "2024-09-19", faturamento: 0 },
+  { dia: "2024-09-20", faturamento: 310 },
+  { dia: "2024-09-21", faturamento: 0 },
+  { dia: "2024-09-22", faturamento: 160 },
+  { dia: "2024-09-23", faturamento: 0 },
+  { dia: "2024-09-24", faturamento: 220 },
+  { dia: "2024-09-25", faturamento: 0 },
+  { dia: "2024-09-26", faturamento: 290 },
+  { dia: "2024-09-27", faturamento: 0 },
+  { dia: "2024-09-28", faturamento: 300 },
+  { dia: "2024-09-29", faturamento: 0 },
+  { dia: "2024-09-30", faturamento: 330 },
+];
+
+function calcularFaturamento(dados) {
+  let totalFaturamento = 0;
+  let numDiasComFaturamento = 0;
+  let menorFaturamento = Infinity;
+  let maiorFaturamento = -Infinity;
+
+  for (let dado of dados) {
+    if (dado.faturamento > 0) {
+      totalFaturamento += dado.faturamento;
+      numDiasComFaturamento++;
+
+      if (dado.faturamento < menorFaturamento) {
+        menorFaturamento = dado.faturamento;
+      }
+
+      if (dado.faturamento > maiorFaturamento) {
+        maiorFaturamento = dado.faturamento;
+      }
+    }
+  }
+
+  const mediaMensal =
+    numDiasComFaturamento > 0 ? totalFaturamento / numDiasComFaturamento : 0;
+
+  let diasAcimaDaMedia = 0;
+  for (let dado of dados) {
+    if (dado.faturamento > mediaMensal) {
+      diasAcimaDaMedia++;
+    }
+  }
+
+  return {
+    menorFaturamento,
+    maiorFaturamento,
+    diasAcimaDaMedia,
+  };
+}
+
+function processarFaturamento() {
+  try {
+    const resultados = calcularFaturamento(faturamentoDados);
+
+    console.log(
+      "O menor valor de faturamento ocorrido em um dia do mês:",
+      resultados.menorFaturamento
+    );
+    console.log(
+      "O maior valor de faturamento ocorrido em um dia do mês:",
+      resultados.maiorFaturamento
+    );
+    console.log(
+      "Número de dias no mês em que o valor de faturamento diário foi superior à média mensal:",
+      resultados.diasAcimaDaMedia
+    );
+  } catch (error) {
+    console.error("Erro ao processar os dados:", error);
+  }
+}
+
+processarFaturamento();
+
+        </code></pre>
+      </section>
+      <section>
+        <h2>
+          4 - Dado o valor de faturamento mensal de uma distribuidora, detalhado
+          por estado:
+        </h2>
+        <ul>
+          <li>SP – R$67.836,43</li>
+          <li>RJ – R$36.678,66</li>
+          <li>MG – R$29.229,88</li>
+          <li>ES – R$27.165,48</li>
+          <li>Outros – R$19.849,53</li>
+        </ul>
+        <h3>
+          Escreva um programa na linguagem que desejar onde calcule o percentual
+          de representação que cada estado teve dentro do valor total mensal da
+          distribuidora.  
+        </h3>
+        <pre><code>
+          const faturamentoPorEstado = {
+            SP: 67836.43,
+            RJ: 36678.66,
+            MG: 29229.88,
+            ES: 27165.48,
+            Outros: 19849.53,
+          };
+          
+          function calcularPercentuais(faturamentoPorEstado) {
+            const totalMensal = Object.values(faturamentoPorEstado).reduce(
+              (total, valor) => total + valor,
+              0
+            );
+          
+            const percentuais = {};
+            for (let estado in faturamentoPorEstado) {
+              const valor = faturamentoPorEstado[estado];
+              percentuais[estado] = ((valor / totalMensal) * 100).toFixed(2); // Arredondar para duas casas decimais
+            }
+          
+            return percentuais;
+          }
+          
+          function exibirPercentuais(percentuais) {
+            console.log("Percentual de cada estado:");
+            for (let estado in percentuais) {
+              console.log(`${estado}: ${percentuais[estado]}%`);
+            }
+          }
+          
+          const percentuais = calcularPercentuais(faturamentoPorEstado);
+          exibirPercentuais(percentuais);
+              </code></pre>
+      </section>
+      <section>
+        <h2>5 - Escreva um programa que inverta os caracteres de um string.</h2>
+        <h3>IMPORTANTE:</h3>
+        <ul>
+          <li>
+            a - Essa string pode ser informada através de qualquer entrada de
+            sua preferência ou pode ser previamente definida no código;
+          </li>
+          <li>b - Evite usar funções prontas, como, por exemplo, reverse;</li>
+        </ul>
+        <label for="string">String:</label>
+        <input type="text" id="string" />
+        <button onclick="inverterString()">Verificar</button>
+        <p id="resultado2"></p>
+      </section>
+    </main>
+
+    <script src="/assets/js/questao2.js"></script>
+    <script src="/assets/js/questao5.js"></script>
+  </body>
+</html>

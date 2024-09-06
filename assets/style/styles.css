@@ -1,0 +1,195 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+  background: #e9f8fa;
+}
+
+header {
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ff0000;
+}
+
+main {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  height: 40px;
+  width: 40%;
+  cursor: pointer;
+  background-color: #5e1a03;
+  color: #ff0000;
+  font-weight: 800;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+}
+
+span {
+  color: #5e1a03;
+  font-weight: 800;
+}
+
+@media (max-width: 480px) {
+  header {
+    height: 100px;
+  }
+  header h1 {
+    font-size: 1.5em;
+    text-align: center;
+  }
+
+  li {
+    font-size: 1em;
+  }
+
+  li p {
+    font-size: 1.2rem;
+  }
+
+  section {
+    width: 80%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  section h2 {
+    font-size: 1.1rem;
+  }
+
+  input {
+    height: 40px;
+  }
+
+  p {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #006400;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  header {
+    height: 100px;
+  }
+  header h1 {
+    font-size: 1.8em;
+    text-align: center;
+  }
+
+  li {
+    font-size: 1em;
+  }
+
+  li p {
+    font-size: 1.2rem;
+  }
+
+  section {
+    width: 80%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  section h2 {
+    font-size: 1.1rem;
+  }
+
+  input {
+    height: 40px;
+  }
+
+  p {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #006400;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  header {
+    height: 140px;
+  }
+  header h1 {
+    font-size: 2rem;
+  }
+
+  li {
+    font-size: 1.2rem;
+  }
+
+  li p {
+    font-size: 1rem;
+  }
+
+  section {
+    width: 80%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  input {
+    height: 40px;
+    width: 40%;
+  }
+
+  p {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #006400;
+  }
+}
+
+@media (min-width: 1201px) {
+  header h1 {
+    font-size: 3rem;
+  }
+
+  li {
+    font-size: 1.4rem;
+  }
+
+  li p {
+    font-size: 1.2rem;
+  }
+
+  section {
+    width: 80%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  input {
+    height: 40px;
+    width: 40%;
+  }
+
+  p {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #006400;
+  }
+}
